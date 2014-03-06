@@ -34,4 +34,4 @@ Before calling any methods on `Analytics`
 [segment]: https://segment.io/
 [analyticsjs]: https://segment.io/libraries/analytics.js
 [analytics-php]: https://segment.io/libraries/php
-[download]: https://updates.mrzen.com/segmentio/segmentio-latest.zip
+[download]: http://updates.mrzen.com/segmentio/segmentio-latest.zip
