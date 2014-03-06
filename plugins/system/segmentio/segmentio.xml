@@ -23,7 +23,7 @@
     <config>
         <fields name="params">
             <fieldset name="basic">
-                <field name="analytifcs_key" type="text" default="" label="SEGMENTIO_ANALYTICS_KEY" />
+                <field name="analytics_key" type="text" default="" label="SEGMENTIO_ANALYTICS_KEY" />
 
                 <field name="enable_rum" type="radio" default="0" label="SEGMENTIO_ENABLE_RUM">
                   <option value="0">JNO</option>
