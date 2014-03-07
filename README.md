@@ -21,6 +21,28 @@ This extension provodides:
   Requres RUM to be enabled
 * Server Tracking: Toggles weather or not analytics can be called from the server side.
 
+## Plugins
+
+### Segment.IO System
+Main system plugin that sets up your analytics -- Must be enabled for any others to work
+
+Defines the following constants based on its parameters:
+
+* `SEGMENTIO_APP` If Application Tracking is enabled
+* `SEGMENTIO_RUM` If RUM is enabled
+* `SEGMENTIO_USER` If user tracking is enabled
+
+### Segment.IO Content
+Content plugin to track content viewing
+Sends information about articles being viewed using RUM.
+
+_Reuquires RUM to be enalbed_
+
+### Segment.IO User (_Unfinished_)
+Plugin to track user events, such as login and logout.
+
+_Requires RUM and User Monitoring to be enabled_
+
 
 ## Custom Tracking
 
