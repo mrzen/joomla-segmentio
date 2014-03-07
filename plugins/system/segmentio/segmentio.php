@@ -62,6 +62,8 @@ EOF;
 
         }
 
+        define('SEGMENTIO', true);
+
         return;
     }
 

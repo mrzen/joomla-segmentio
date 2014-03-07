@@ -11,13 +11,14 @@ This extension provodides:
 ## Installation:
 
 * Install from URL or upload the [Installer][download]
-
 * Enter your application's key in the options
+* Enable all the options (usually)
 
 ## Options
 
 * RUM (Real User Monitoring): Toggles the activation of the tracking JS
 * User Tracking: Toggles weather or not actions will be tracked against logged in users
+  Requres RUM to be enabled
 * Server Tracking: Toggles weather or not analytics can be called from the server side.
 
 
@@ -29,7 +30,8 @@ If you want to use [PHP][analytics-php] tracking, you'll need to import the libr
 
     jimport('segmentio.analytics');
 
-Before calling any methods on `Analytics`
+Before calling any methods on `Analytics`.
+
 
 [segment]: https://segment.io/
 [analyticsjs]: https://segment.io/libraries/analytics.js
