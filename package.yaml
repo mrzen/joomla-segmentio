@@ -10,5 +10,7 @@ contents:
   plugins:
     system:
       - segmentio
+    content:
+      - segmentio
   libraries:
     - segmentio

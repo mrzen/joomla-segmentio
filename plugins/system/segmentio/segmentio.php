@@ -62,7 +62,7 @@ EOF;
 
         }
 
-        define('SEGMENTIO', true);
+        define('SEGMENTIO_APP', true);
 
         return;
     }
@@ -80,10 +80,11 @@ EOF;
 
         /* Check RUM is enabled. */
         if($this->params->get('enable_rum','0') === '1' && $this->haveAnalyticsKey()) {
+            define('SEGMENTIO_RUM', true);
             $analytics_key = $this->params->get('analytics_key');
             $document =& JFactory::getDocument();
             $tracking_code = str_replace("{{ANALYTICS_KEY}}", $analytics_key, self::TRACKING_SCRIPT);
-
+            
             $document->addScriptDeclaration($tracking_code);
 
 
