@@ -90,6 +90,7 @@ EOF;
 
             /* Check if User monitoring is enabled */
             if($this->params->get('enable_usertrack','0') === '1') {
+                define('SEGMENTIO_USER', true);
                 $user = JFactory::getUser();
 
                 /* Check the user is not a guest */

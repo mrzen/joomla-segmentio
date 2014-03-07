@@ -12,5 +12,7 @@ contents:
       - segmentio
     content:
       - segmentio
+    user:
+      - segmentio
   libraries:
     - segmentio

@@ -29,7 +29,7 @@ EOF;
     /**
      * Track an article view
      * 
-     * Places event tracking code under the article
+     * Places event tracking code under the article.
      *
      * @param string $context Context of passed content (e.g. com_content.article)
      * @param \JArticle &$article Article being parts (or content)
@@ -40,9 +40,9 @@ EOF;
      */
     public function onContentAfterDisplay($context , &$article, &$params, $limitstart) {
         $data = array(
-            'article_id' => $article->id,
-            'article_title' => $article->title,
-            'article_author' => $article->author,
+            'article_id'       => $article->id,
+            'article_title'    => $article->title,
+            'article_author'   => $article->author,
             'article_featured' => $article->featured,
         );
 
