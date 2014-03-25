@@ -5,13 +5,21 @@ require 'yaml'
 require 'rake'
 require 'rugged'
 require 'builder'
+require 'logger'
 
 #
 # Load Configuration from package.yaml
 #
 $package = YAML.load_file("./package.yaml")
 
+# Logging
+$logger  = Logger.new($stdout)
+$logger.level = Logger::INFO
 
+Rake.application.options.quiet = true if ENV['SILENT_RAKE'].nil?
+
+
+task :default => [:upload_package]
 =begin rdoc
 
 Get Version Name.
@@ -28,7 +36,7 @@ def version_name
   # commit_count   = reference.log.length
   branch_name = reference.name.split("/").last
 
-  commit_id[0..8] + "-" + branch_name
+  $package['package']['version'].to_s + '.' + commit_id[0..8] + "-" + branch_name
   #commit_count.to_s + '-' + branch_name
 end
 
@@ -68,7 +76,7 @@ def update_manifest
       u.description $package['package']['description']
       u.type 'package'
       u.version version_name
-      u.infourl "https://github.com/mrzen/segment-joomla"
+      u.infourl $package['package']['infourl']
       u.client 'site'
       u.downloads do |d|
         d.downloadurl({:type => "full" , :format => "zip"}, "#{$package['package']['update_site']}/#{package_name}.zip")
@@ -230,6 +238,31 @@ file package_file_path => [build_area] do
   end
 end
 
+desc "Upload the package to S3"
+task :upload_package => [:package] do
+  require 'aws-sdk'
+
+  s3 = AWS::S3.new(
+                   :aws_access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+                   :aws_secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
+                   :region => 'eu-west-1',
+                   :logger => $logger
+                   )
+
+  bucket = s3.buckets['updates.mrzen.com']
+
+  # Upload the file
+  bucket.objects["#{$package['name']}/#{package_name}.zip"].write(:file => "./packages/#{package_name}.zip")
+    .acl = :public_read
+
+  # Upload a "latest"
+  bucket.objects["#{$package['name']}/#{$package['name']}-latest.zip"].write(:file => "./packages/#{package_name}.zip")
+    .acl = :public_read
+  
+  # Upload the update manifest
+  bucket.objects["#{$package['name']}/updates.xml"].write( update_manifest )
+    .acl = :public_read
+end
 
 # Heplper tasks
 desc "List files to be packaged"

@@ -3,6 +3,7 @@ package:
   name: Segment.IO
   description: SegmentIO Integration for Joomla
   update_site: http://updates.mrzen.com/segmentio
+  infourl: https://github.com/mrzen/joomla-segmentio
   version: 3.2
   author: Mr. Zen Ltd
 

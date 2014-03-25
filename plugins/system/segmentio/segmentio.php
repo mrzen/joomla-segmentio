@@ -75,7 +75,6 @@ EOF;
      * Adds the tracking script to the document <head>
      * If RUM (Real User Monitoring) is enabled
      *
-     *
      * @since 3.2
      */
     public function onBeforeRender() {
