@@ -18,29 +18,29 @@ jimport('segmentio.analytics');
 class plgUserSegmentIO extends JPlugin {
 
     /**
-     * @const Event Tracking Code
+     * Event Tracking Code template
      */
     const TRACK_EVENT = <<<EOF
 analytics.track('{{EVENT}}','{{DATA}}')
 EOF;
 
     /**
-     * @const User login event name
+     * User login event name
      */
     const USER_LOGIN_EVENT = 'User Login';
 
     /**
-     * @const User login failure event name
+     * User login failure event name
      */
     const USER_LOGIN_FAILURE_EVENT = 'User Login Failure';
 
     /**
-     * @const User logout event
+     * User logout event
      */
     const USER_LOGOUT_EVENT = 'User Logout';
 
     /**
-     * @const User save event
+     * User save event
      */
     const USER_SAVE_EVENT = 'User Save';
     
@@ -92,6 +92,8 @@ EOF;
     /**
      * Get the data to be tracked
      *
+     * @param \JUser $user User to get tracking data for
+     * 
      * @return string json of user data
      */
     private function getTrackingData($user) {

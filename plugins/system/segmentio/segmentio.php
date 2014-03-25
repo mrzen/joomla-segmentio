@@ -23,13 +23,15 @@ class plgSystemSegmentIO extends JPlugin {
      * @const Tracking JS
      */
     const TRACKING_SCRIPT = <<<EOF
-
 window.analytics||(window.analytics=[]),window.analytics.methods=["identify","track","trackLink","trackForm","trackClick","trackSubmit","page","pageview","ab","alias","ready","group","on","once","off"],window.analytics.factory=function(t){return function(){var a=Array.prototype.slice.call(arguments);return a.unshift(t),window.analytics.push(a),window.analytics}};for(var i=0;window.analytics.methods.length>i;i++){var method=window.analytics.methods[i];window.analytics[method]=window.analytics.factory(method)}window.analytics.load=function(t){var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n)},window.analytics.SNIPPET_VERSION="2.0.8",
 window.analytics.load("{{ANALYTICS_KEY}}");
-window.analytics.page();
 
 EOF;
 
+/**
+ * @const Pageview Tracking JS
+ */
+    const PAGEVIEW_SCRIPT = "window.analytics.page();";
 
     /**
      * @const Identification JS
@@ -87,6 +89,8 @@ EOF;
             
             $document->addScriptDeclaration($tracking_code);
 
+            if($this->params->get('enable_pagetrack', '0') === '1')
+                $document->addScriptDeclaration(self::PAGEVIEW_SCRIPT);
 
             /* Check if User monitoring is enabled */
             if($this->params->get('enable_usertrack','0') === '1') {

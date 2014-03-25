@@ -53,7 +53,7 @@ If you want to use [PHP][analytics-php] tracking, you'll need to import the libr
     jimport('segmentio.analytics');
 
 Before calling any methods on `Analytics`.
-
+It is recommended that you wrap your tracking code in a plugin, and check for the constants defined by the system plugin.
 
 [segment]: https://segment.io/
 [analyticsjs]: https://segment.io/libraries/analytics.js

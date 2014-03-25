@@ -40,6 +40,11 @@
                   <option value="1">JYES</option>
                 </field>
 
+                <field name="enable_pagetrack" type="radio" default="0" label="SEGMENTIO_ENABLE_PAGETRACK">
+                  <option value="0">JNO</option>
+                  <option value="1">JYES</option>
+                </field>
+
                 
             </fieldset>
         </fields>

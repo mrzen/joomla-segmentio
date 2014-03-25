@@ -10,10 +10,14 @@
 
 jimport('joomla.plugin.plugin');
 
-
+/**
+ * Segment.IO Content Tracking
+ *
+ */
 class plgContentSegmentIO extends JPlugin {
 
     /**
+     * JS Template for tracking an event
      * @const Event Tracking JS
      */
     const TRACK_EVENT = <<<EOF
@@ -22,6 +26,7 @@ EOF;
 
 
     /**
+     * Event name for an article view
      * @const Article viewing event name
      */
     const ARTICLE_VIEW_EVENT = "Viewed an Article";
@@ -32,8 +37,8 @@ EOF;
      * Places event tracking code under the article.
      *
      * @param string $context Context of passed content (e.g. com_content.article)
-     * @param \JArticle &$article Article being parts (or content)
-     * @param \JRegistry &$params Content paramters
+     * @param \JArticle $article Article being parts (or content)
+     * @param \JRegistry $params Content paramters
      * @param int $limitstart Page number
      *
      * @return string Tracking code
