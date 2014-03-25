@@ -20,6 +20,7 @@ This extension provodides:
 * User Tracking: Toggles weather or not actions will be tracked against logged in users
   Requres RUM to be enabled
 * Server Tracking: Toggles weather or not analytics can be called from the server side.
+* Page View Tracking: Toggles if pageviews will be tracked to Segment.IO (Note: Enabling this will greatly increase your Segment.IO usage)
 
 ## Plugins
 
